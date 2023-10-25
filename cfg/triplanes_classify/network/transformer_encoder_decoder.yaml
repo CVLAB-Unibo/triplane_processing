@@ -1,8 +1,0 @@
-_target_: networks.networks.Transformer_EncoderDecoder_Cls
-
-embedding_dim: ${triplane_params.resolution}
-projection_dim: 512
-nhead: 4
-batch_first: True
-num_layers: 8
-num_classes: ${dataset.num_classes}
