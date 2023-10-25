@@ -1,0 +1,3 @@
+_target_: data.voxel_inr.VoxelInrDataset
+inrs_root: datasets/shapenet_voxels/shapenet_vox_h512l4_aug
+name: shapenet

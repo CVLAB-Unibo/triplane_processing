@@ -1,0 +1,55 @@
+defaults:
+  - opt: adamW
+  - scheduler: onecycle
+  - dataset: shapenet_part_seg
+  - network: transformer_encoder_decoder
+  - loss: cross_entropy
+  - _self_
+  - override hydra/hydra_logging: disabled  
+  - override hydra/job_logging: disabled
+
+mode: train
+ckpt_path: none
+
+trainer:
+  module_name: triplane_part_seg
+
+train:
+  batch_size: 32
+  num_epochs: 75
+  num_workers: 32
+
+train_transform:
+  random_crop: -1
+  gaussian_blur: -1
+  horizontal_flip: False
+  vertical_flip: False
+
+val_transoform:
+  center_crop: ${train_transform.random_crop}
+
+val:
+  batch_size: 128
+  checkpoint_period: 1
+
+triplane_params:
+  hidden_dim: 16
+  resolution: 32
+  mlp_hidden_dim: 64
+  mlp_num_hidden_layers: 3
+
+runtime:
+  gpus: 2
+  precision: 16-mixed
+  find_unused_parameters: False
+
+wandb:
+  entity: 3dda
+  project: triplane_part_seg
+  run_name: ${dataset.name}-${now:%m-%d}/${now:%H-%M}_encoder_decoder
+  dir: experiments_triplane_part_seg
+
+hydra:
+  output_subdir: ${wandb.dir}/${wandb.run_name}
+  run:
+    dir: .

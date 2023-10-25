@@ -1,0 +1,39 @@
+defaults:
+  - opt: adam
+  - _self_
+  - dataset: manifold
+  - override hydra/hydra_logging: disabled  
+  - override hydra/job_logging: disabled
+
+splits: ["val", "test", "train"]
+
+trainer:
+  module_name: fit_triplane_mesh
+
+num_points_pcd: 16384
+num_queries_on_surface: 100_000
+stds: [0.003, 0.01, 0.1]
+num_points_per_std: [250_000, 200_000, 25_000, 25_000]
+
+batch_size: 128
+num_points_fitting: 50_000
+num_steps: 600
+
+triplane_params:
+  hidden_dim: 16
+  resolution: 32
+  mlp_hidden_dim: 64
+  mlp_num_hidden_layers: 3
+
+wandb:
+  entity: 3dda
+  project: triplane_fit_mesh
+  run_name: ${dataset.name}
+  dir: experiments_fit_mesh
+
+hydra:
+  output_subdir: ${wandb.dir}/${wandb.run_name}
+  run:
+    dir: .
+
+out_root: datasets/${dataset.name}/mesh_triplane_${triplane_params.resolution}_${triplane_params.hidden_dim}_h${triplane_params.mlp_hidden_dim}l${triplane_params.mlp_num_hidden_layers}_freq_encoding

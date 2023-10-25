@@ -1,0 +1,3 @@
+_target_: data.pcd_part_inr.PcdPartInrDataset
+inrs_root: datasets/shapenet_part/shapenet_partseg_h512l4
+name: shapenet_part

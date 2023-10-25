@@ -1,0 +1,10 @@
+_target_: networks.networks.FC
+
+embedding_dim: ${triplane_params.resolution}
+channels: 48
+num_classes: ${dataset.num_classes}
+layers_dim:
+  - 512
+  - 256
+  - 128
+  - 64  

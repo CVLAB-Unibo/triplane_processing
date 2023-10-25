@@ -1,0 +1,4 @@
+_target_: data.triplanes.TriplaneDataset
+inrs_root: /media/data5/pier/nerf2vec/nerfacc_nerf2vec/triplane_dataset_h64l3_siren
+name: shapenet
+num_classes: 13

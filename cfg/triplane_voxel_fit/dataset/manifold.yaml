@@ -1,0 +1,3 @@
+_target_: data.voxel_inr.VoxelInrDataset
+inrs_root: datasets/Manifold40/pcds_16384
+name: Manifold40

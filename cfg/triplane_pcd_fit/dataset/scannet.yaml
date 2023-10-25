@@ -1,0 +1,3 @@
+_target_: data.pcd_inr.PcdInrDataset
+inrs_root: datasets/scannet/scannet_h512l4_aug
+name: scannet

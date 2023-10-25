@@ -1,0 +1,4 @@
+_target_: data.triplanes.MLPDataset
+inrs_root: datasets/Manifold40/mesh_triplane_32_16_h64l3_freq_encoding
+name: Manifold40
+num_classes: 40

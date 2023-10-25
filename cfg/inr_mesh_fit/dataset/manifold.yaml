@@ -1,0 +1,3 @@
+_target_: data.mesh_inr.MeshInrDataset
+inrs_root: datasets/Manifold40/manifold40_h512l4_aug/
+name: Manifold40

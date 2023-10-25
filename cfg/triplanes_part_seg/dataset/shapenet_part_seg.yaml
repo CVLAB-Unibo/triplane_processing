@@ -1,0 +1,5 @@
+_target_: data.triplanes.TriplanePartDataset
+inrs_root: datasets/shapenet_part/pcd_part_triplane_32_16_h64l3_freq_encoding
+name: shapenet_part
+num_classes: 16
+num_parts: 50

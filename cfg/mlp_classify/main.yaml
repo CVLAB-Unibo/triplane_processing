@@ -1,0 +1,52 @@
+defaults:
+  - opt: adamW
+  - scheduler: onecycle
+  - dataset: manifold
+  - network: fc
+  - loss: cross_entropy
+  - _self_
+  - override hydra/hydra_logging: disabled  
+  - override hydra/job_logging: disabled
+
+trainer:
+  module_name: triplane_classifier
+
+train:
+  batch_size: 256
+  num_epochs: 150
+  num_workers: 16
+
+train_transform:
+  random_crop: 30
+  gaussian_blur: -1
+  horizontal_flip: False
+  vertical_flip: False
+
+val_transoform:
+  center_crop: ${train_transform.random_crop}
+
+val:
+  batch_size: 256
+  checkpoint_period: 1
+
+triplane_params:
+  hidden_dim: 16
+  resolution: 32
+  mlp_hidden_dim: 64
+  mlp_num_hidden_layers: 3
+
+runtime:
+  gpus: 1
+  precision: 16-mixed
+  find_unused_parameters: True
+
+wandb:
+  entity: 3dda
+  project: triplane_classifier
+  run_name: ${dataset.name}-${now:%m-%d}/${now:%H-%M}_FC
+  dir: experiments_triplane_classifier
+
+hydra:
+  output_subdir: ${wandb.dir}/${wandb.run_name}_FC
+  run:
+    dir: .

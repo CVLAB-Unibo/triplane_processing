@@ -1,0 +1,5 @@
+_target_: networks.networks.CNNEncoder
+num_classes: ${dataset.num_classes}
+pretrained: False
+channels: 48
+embedding_dim: ${triplane_params.resolution}

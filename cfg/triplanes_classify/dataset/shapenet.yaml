@@ -1,0 +1,4 @@
+_target_: data.triplanes.TriplaneDataset
+inrs_root: datasets/shapenet/pcd_triplane_32_16_h64l3_freq_encoding
+name: shapenet
+num_classes: 10

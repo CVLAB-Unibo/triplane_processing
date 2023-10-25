@@ -1,0 +1,47 @@
+name: triplane_official
+channels:
+  - pytorch
+  - conda-forge
+  - nvidia/label/cuda-11.8.0
+  - fvcore
+  - iopath
+  - pytorch3d
+  - pyg
+  - defaults
+
+dependencies:
+  # python version
+  - python=3.8
+
+  # cuda, toolkit for pytorch
+  # other to compile with nvcc
+  - cudatoolkit=11.8
+
+  # core
+  - pytorch=2.0.1
+  - pytorch-lightning
+  - torchvision
+  - torchaudio
+  - matplotlib
+  - pip
+  - fvcore
+  - iopath
+  - pytorch3d
+  - pyg
+  
+  # dev
+  - black
+
+  - pip:
+    # core
+    - wandb
+    - pycarus
+    - pipe
+    - plyfile
+    - hesiod
+    - h5py 
+    - hydra-core
+    - matplotlib
+    - omegaconf
+    # dev
+    - pytest

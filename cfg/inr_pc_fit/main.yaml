@@ -1,0 +1,37 @@
+defaults:
+  - opt: adam
+  - _self_
+  - dataset: modelnet
+  - override hydra/hydra_logging: disabled  
+  - override hydra/job_logging: disabled
+
+splits: ["val", "test", "train"]
+
+trainer:
+  module_name: fit_inr_pc
+
+num_points_pcd: 2048
+num_queries_on_surface: 100_000
+stds: [0.003, 0.01, 0.1]
+num_points_per_std: [250_000, 200_000, 25_000, 25_000]
+
+batch_size: 64
+num_points_fitting: 10_000
+num_steps: 1000
+
+inr_params:
+  mlp_hidden_dim: 512
+  mlp_num_hidden_layers: 4
+
+wandb:
+  entity: 3dda
+  project: triplane_fit_pc
+  run_name: ${dataset.name}_INR
+  dir: experiments_fit_pc_inr
+
+hydra:
+  output_subdir: ${wandb.dir}/${wandb.run_name}
+  run:
+    dir: .
+
+out_root: datasets/${dataset.name}/pcd_INR_h${inr_params.mlp_hidden_dim}l${inr_params.mlp_num_hidden_layers}
