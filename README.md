@@ -23,3 +23,14 @@ If you need pre-computed triplanes on the datasets used in the paper, please con
 
 Train classifier on triplanes:
 ```python triplane_cls.py dataset=modelnet```
+
+## Cite us
+If you find our work useful, please cite us:
+```bibtex
+@inproceedings{cardace2024neural,
+    title={Neural Processing of Tri-Plane Hybrid Neural Fields},
+    author={Cardace, Adriano and Zama Ramirez, Pierluigi and Ballerini, Francesco and Zhou, Allan and Salti, Samuele and Di Stefano, Luigi},
+    booktitle={The Twelfth International Conference on Learning Representations},
+    year={2024}
+}
+```
